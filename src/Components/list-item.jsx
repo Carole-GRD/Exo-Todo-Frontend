@@ -13,22 +13,27 @@ const ListItem = ({_id, task, deleteTask, onHandleChecked}) => {
 
     const handleChecked = () => {
         setIsChecked(!isChecked);
-        console.log(isChecked);
+        // console.log(isChecked);
         onHandleChecked(_id, task);  
     }
 
     return (
         <>
-            <div className={style.item}>
+            <div className={isChecked == false ? style.itemChecked : style.item}>
                 <div>
                     <input 
                         value={isChecked}
                         onChange={handleChecked}
                         type="checkbox" />
-                    <label htmlFor="">{task}</label>
+                    <label className={isChecked == false ? style.textCheckedTask : ''} htmlFor="">{task}</label>
                 </div>
                 <div>
-                    <button type='submit' onClick={onDelete}>Supprimer</button>
+                    <button 
+                        type='submit' 
+                        onClick={onDelete}
+                        className={isChecked == false ? style.btnCheckedTaskActif : style.btnCheckedTask}>
+                            Supprimer
+                    </button>
                 </div>
             </div>
         </>

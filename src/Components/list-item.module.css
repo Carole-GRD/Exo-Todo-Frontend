@@ -1,11 +1,43 @@
-.item {
+.item,
+.itemChecked {
     /* border: 1px solid red; */
     width: 100%;
     display: flex;
     justify-content: space-between;
+    margin: 4px 0;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 10px;
 }
+
+.itemChecked {
+    background-color: #c2c2c2;
+}
+
+.itemChecked input,
 .item input {
     margin-right: 1rem;
 }
 
+input:focus {
+    background-color: rgba(0, 128, 0, 0.114);
+    color: green;
+    letter-spacing: .1rem;
+    font-family: sans-serif;
+    padding: 2px 5px;
+}
 
+.textCheckedTask {
+    /* color: rgba(255, 10, 0, 0.575); */
+    font-weight: bold;
+}
+
+.btnCheckedTaskActif {
+    background-color: rgba(255, 10, 0, 0.575);
+    border-radius: 2.5px;
+    padding: 2px 10px;
+}
+
+.btnCheckedTask {
+    padding: 2px 10px;
+}

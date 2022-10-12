@@ -1,3 +1,19 @@
+.page {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    /* align-items: center; */
+    /* justify-content: center; */
+    min-width: 50%;
+    min-height: 100vh;
+    background-color: floralwhite;
+}
+
+
 .title {
     text-align: center;
+    padding: 50px 0 30px;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+
 }

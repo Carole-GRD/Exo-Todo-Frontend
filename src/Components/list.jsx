@@ -7,9 +7,8 @@ import { useForm } from 'react-hook-form';
 
 
 const List = () => {
-
     const { handleSubmit, register, reset } = useForm();
-
+    
     const [list, setList] = useState([]);
     const [tasksToDelete, setTasksToDelete] = useState([]);
     
@@ -74,7 +73,7 @@ const List = () => {
             setTasksToDelete(current => [...current.map(task => task), idTaskChecked]);
         }
     }
-    // console.log(tasksToDelete);
+    console.log(tasksToDelete);
 
     //////////////////////////////////////////////////////////////////////////////////////
     // Supprimer TOUS LES éléments cochés
@@ -83,11 +82,11 @@ const List = () => {
         console.log('éléments à supprimer');
         console.log(tasksToDelete);
         tasksToDelete.forEach(id => 
-        axios.delete(`http://localhost:8080/api/list/${id}`)
-            .then(function () {
-                setupList();
-                setTasksToDelete([]);
-            })
+            axios.delete(`http://localhost:8080/api/list/${id}`)
+                .then(function () {
+                    setupList();
+                    setTasksToDelete([]);
+                })
         )
     }
 
@@ -129,16 +128,21 @@ const List = () => {
                             key={task._id} {...task} />
                     ))}
 
-                    <form onSubmit={handleSubmit(onRegisterTaskToAdd)}>
+                    <form onSubmit={handleSubmit(onRegisterTaskToAdd)} className={style.form}>
                         <input id='task' type='text' {...register('task')} />
-                        <button type='submit'>Ajouter</button>
+                        <button type='submit' className={style.btnAddTask}>Ajouter</button>
                     </form>
 
                 </div>
             </div>
 
             <div className={style.container}>
-                <button type='submit' onClick={onDeleteTasksChecked}>Supprimer tous les éléments cochés</button>
+                <button 
+                    type='submit' 
+                    onClick={onDeleteTasksChecked}
+                    className={tasksToDelete != '' ? style.btnDeleteAllSelectedTaskActif : style.btnDeleteAllSelectedTask}>
+                        Supprimer tous les éléments cochés
+                </button>
             </div>
             
         </>
